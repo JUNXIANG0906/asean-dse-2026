@@ -228,17 +228,12 @@ timeline
 
 ## 📂 Repository Structure
 
+## 📂 Repository Structure
+
 ```text
-├── docs/
-│   └── MALAYSIA_JJVISION_Presentation_slide.pdf   # Official ASEAN DSE 2026 Finalist Pitch Deck
-├── analytics/
-│   └── sac_storyboard_exports/                    # SAP Analytics Cloud (SAC) models & visualizations
-├── cris_engine/
-│   ├── risk_scoring.py                            # Climate anomaly & hazard risk scoring model
-│   └── stress_test_simulator.py                   # Crop loss & multi-criteria strategy optimizer
-├── hardware_specs/
-│   └── field_station_bom.md                       # 14-component IoT AWS architecture & BOM
-└── README.md
+├── MALAYSIA_JJVISION_Presentation_slide.pdf   # Official ASEAN DSE 2026 Finalist Pitch Deck
+├── Certificate.pdf                            # ASEAN DSE 2026 Malaysia National Finalist Certificate
+└── README.md                                  # Project overview, methodology & impact summary
 ```
 
 ---
