@@ -45,7 +45,7 @@
 
 ## 🌊 The Problem & Systemic Root Causes
 
-Globally, **1 in 4 people (2.5 billion)** went without reliable access to sufficient food in 2025, while across ASEAN, **12.8% of the population (87.6 million people)** experienced moderate or severe food insecurity between 2023 and 2025 (with prevalence reaching **40.0%** in Cambodia, **35.6%** in Lao PDR, **32.9%** in the Philippines, **32.7%** in Myanmar, and **16.7%** in Malaysia).
+Globally, **1 in 4 people (2.5 billion)** went without reliable access to sufficient food in 2025, while across ASEAN, **12.8% of the population (87.6 million people)** experienced moderate or severe food insecurity between 2023 and 2025 (reaching **40.0%** in Cambodia, **35.6%** in Lao PDR, **32.9%** in the Philippines, **32.7%** in Myanmar, and **16.7%** in Malaysia).
 
 In Malaysia, climate change acts as a **threat multiplier**—simultaneously activating production, water, supply-chain, and import vulnerabilities:
 
