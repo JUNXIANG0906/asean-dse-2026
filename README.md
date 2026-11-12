@@ -45,23 +45,23 @@
 
 ## 🌊 The Problem & Systemic Root Causes
 
-Across ASEAN, **12.8% of the population (87.6 million people)** experienced moderate or severe food insecurity between 2023 and 2025[cite: 3]. In Malaysia, climate change acts as a **threat multiplier**—triggering floods, erratic rainfall, and droughts that simultaneously disrupt an already vulnerable food system[cite: 9]:
+Across ASEAN, **12.8% of the population (87.6 million people)** experienced moderate or severe food insecurity between 2023 and 2025. In Malaysia, climate change acts as a **threat multiplier**—triggering floods, erratic rainfall, and droughts that simultaneously disrupt an already vulnerable food system:
 
-* 🌾 **Baseline Production Vulnerabilities:** Malaysia's rice Self-Sufficiency Ratio (SSR) dropped to **52.9%** in 2024, while paddy production fell **5.3%** (to 2.06M tonnes)[cite: 6].
-* 📦 **High Import Dependence:** Malaysia spent **RM93.8 billion** on food imports in 2024 (+19.1% YoY), with heavy reliance on imports for staples like onions (100%), garlic (100%), beef (83.5%), and mutton (92.1%)[cite: 8].
-* ⛈️ **Escalating Flood Impacts:** Flood incidents surged **66.3%** from 2023 to 2024 (809 to 1,345 incidents), driving agricultural losses up **53.5%** to **RM185.2 million** (including RM158.7M in Kedah paddy losses alone)[cite: 13, 58].
+* 🌾 **Baseline Production Vulnerabilities:** Malaysia's rice Self-Sufficiency Ratio (SSR) dropped to **52.9%** in 2024, while paddy production fell **5.3%** (to 2.06M tonnes).
+* 📦 **High Import Dependence:** Malaysia spent **RM93.8 billion** on food imports in 2024 (+19.1% YoY), with heavy reliance on imports for staples like onions (100%), garlic (100%), beef (83.5%), and mutton (92.1%).
+* ⛈️ **Escalating Flood Impacts:** Flood incidents surged **66.3%** from 2023 to 2024 (809 to 1,345 incidents), driving agricultural losses up **53.5%** to **RM185.2 million** (including RM158.7M in Kedah paddy losses alone).
 
 ### 🔍 Four Systemic Root Causes
-1. **Fragmented Information:** Hazard, hydrological, and agricultural datasets exist in isolated agency silos[cite: 14].
-2. **Critical Information Gaps:** **40%** of 143 essential climate/agricultural data items in Malaysia were unavailable, with only **18%** readily accessible[cite: 17].
-3. **Prediction-Action Gap:** Existing early-warning systems fail to translate raw meteorological alerts into localized, role-specific operational steps[cite: 15].
-4. **Insufficient Resilience:** Delayed coordination creates recurring supply chain bottlenecks and severe economic exposure[cite: 16].
+1. **Fragmented Information:** Hazard, hydrological, and agricultural datasets exist in isolated agency silos.
+2. **Critical Information Gaps:** **40%** of 143 essential climate/agricultural data items in Malaysia were unavailable, with only **18%** readily accessible.
+3. **Prediction-Action Gap:** Existing early-warning systems fail to translate raw meteorological alerts into localized, role-specific operational steps.
+4. **Insufficient Resilience:** Delayed coordination creates recurring supply chain bottlenecks and severe economic exposure.
 
 ---
 
 ## 💡 System Architecture & Workflow
 
-**FWise (FoodWise)** connects ground-level IoT telemetry with multi-agency decision intelligence[cite: 20, 40]:
+**FWise (FoodWise)** connects ground-level IoT telemetry with multi-agency decision intelligence:
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#0077B6', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#03045E', 'lineColor': '#00B4D8', 'secondaryColor': '#CAF0F8', 'tertiaryColor': '#90E0EF'}}}%%
