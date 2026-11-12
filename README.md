@@ -79,3 +79,171 @@ flowchart LR
     style C fill:#0077B6,stroke:#90E0EF,stroke-width:2px,color:#fff
     style D fill:#0096C7,stroke:#CAF0F8,stroke-width:2px,color:#fff
     style E fill:#00B4D8,stroke:#03045E,stroke-width:2px,color:#000
+```
+
+### Dual User Roles
+* **🏛️ Government & Coordinating Agencies (Main CRIS Web Platform):** Monitor live regional risk dashboards, receive automated CRIS alerts, run "What-If" disaster stress tests, compare AI-ranked response strategies, and authorize official multi-agency directives.
+* **🚜 Implementation Users (FWise Stakeholder Mobile App):** Registered food producers, millers, and logistics operators receive assigned action directives, view localized forecasts, update completion percentages in real time, and upload verification evidence.
+
+---
+
+## 📡 FWise IoT Field Station Hardware & Baseline Thresholds
+
+Each solar-powered **FWise Automatic Weather Station (AWS)** comprises **14 integrated hardware components** streaming continuous ground-truth telemetry into CRIS:
+
+| # | Component | Parameter Measured | Baseline / Reference Threshold |
+| :-: | :--- | :--- | :--- |
+| 1 | **Anemometer** | Wind speed, gust & average | $\approx 2.0\text{ m/s}$ |
+| 2 | **Wind Vane** | Prevailing wind direction | Directional vector |
+| 3 | **Air Temperature Sensor** *(Radiation Shield)* | Min, max & mean air temperature | $\approx 27\text{--}28^\circ\text{C}$ |
+| 4 | **Relative Humidity Sensor** *(Radiation Shield)* | Mean RH, dew point & VPD | $\approx 80\%$ |
+| 5 | **Tipping-Bucket Rain Gauge** | Annual rainfall & hourly intensity | $\approx 2,500\text{ mm/yr}$ ($0\text{--}10\text{ mm/h}$ normal) |
+| 6 | **Pyranometer** | Global solar radiation ($W/m^2$) | $\approx 18\text{ MJ/m}^2/\text{day}$ |
+| 7 | **Barometric Pressure Sensor** | Mean sea-level pressure | $\approx 1,010\text{ hPa}$ |
+| 8 | **Soil Monitoring Array** *(10cm / 40cm)* | Soil moisture (% VWC), temp & EC | $27\text{--}30^\circ\text{C}$; $0\text{--}2\text{ dS/m}$ non-saline |
+| 9 | **Acoustic Water Level / Flood Sensor** | Canal stage, rate of rise & flood level | DID Alert / Warning / Danger thresholds |
+| 10 | **Data Logger & Edge Controller** | Local buffering & telemetry processing | Continuous edge logging |
+| 11 | **Communication Antenna** | Multi-network telemetry uplink | 4G / 5G, LoRaWAN, or Satellite |
+| 12 | **Solar Power System** | Solar panel, charge controller & battery | Off-grid 24/7 operation |
+| 13 | **Station Health Indicator** | Power, sensors, comms & battery status | On-site LED & remote diagnostics |
+| 14 | **Mounting Pole & Mast Structure** | Galvanized mast, brackets & lightning protection | Concrete foundation |
+
+*(Additional canopy monitoring via Multi-Spectrum Canopy Health NDVI Camera)*
+
+---
+
+## 🧮 Mathematical & Analytical Framework (CRIS Engine)
+
+The CRIS decision-support engine evaluates hazard risk and ranks response strategies across seven multidimensional criteria:
+
+### 1. Climate-Risk Scoring Model
+Calculates composite hazard risk score $R_h$ by aggregating weighted standardized environmental abnormality scores $S_i$:
+
+$$R_h = \sum_{i=1}^{n} w_{h,i} S_i$$
+
+* $R_h$: Risk score for climate hazard $h$
+* $S_i$: Standardized abnormality score of environmental variable $i$
+* $w_{h,i}$: Weight assigned to variable $i$ for hazard $h$
+
+### 2. Affected Agricultural Area & Projected Production Loss
+Computes impacted acreage ($A_{\text{affected}}$) using zone impact indicators $I_i \in [0,1]$, then estimates total crop yield lost ($L_{\text{loss}}$) and percentage loss:
+
+$$A_{\text{affected}} = \sum_{i=1}^{n} A_i I_i \qquad \text{and} \qquad L_{\text{loss}} = A_{\text{affected}} \times Y_{\text{baseline}} \times L_{\text{rate}}$$
+
+$$\text{Projected Crop Loss (\%)} = \frac{L_{\text{loss}}}{P_{\text{production}}} \times 100\%$$
+
+* $A_i$: Area of agricultural zone $i$ ($\text{ha}$)
+* $Y_{\text{baseline}}$: Expected baseline crop yield ($\text{tonnes/ha}$)
+* $L_{\text{rate}}$: Estimated percentage production-loss rate
+* $P_{\text{production}}$: Expected production without the climate event ($\text{tonnes}$)
+
+### 3. Residual Food Deficit, Implementation Cost & Economic Exposure
+Evaluates supply shortfalls ($RD$), total intervention budget ($C_s$), and remaining asset vulnerability ($E_s$) under strategy $s$:
+
+$$RD = \text{Demand} - \text{Supply}_{\text{available}} \qquad \text{and} \qquad C_s = \sum_{k=1}^{m} C_{k,s}$$
+
+$$E_s = \sum_{j=1}^{n} Q_{j,s} V_j \qquad \text{and} \qquad L_{AS} = L_0 - L_s$$
+
+* $Q_{j,s}$: Quantity of asset/resource $j$ remaining at risk under strategy $s$
+* $V_j$: Monetary value per unit of asset $j$ ($\text{RM}$)
+* $L_0, L_s$: Unmitigated baseline loss vs. post-intervention loss ($L_{AS}$ = loss avoided)
+
+### 4. Overall Strategy Resilience Score
+Normalizes candidate performance metrics $N_{j,s}$ across evaluation criteria $j$ to compute the composite Resilience Score ($RS_s$):
+
+$$RS_s = \sum_{j=1}^{n} W_j N_{j,s}$$
+
+* $RS_s$: Overall resilience score for strategy $s$
+* $N_{j,s}$: Normalized performance score of criterion $j$
+* $W_j$: Priority weight assigned to evaluation criterion $j$
+
+---
+
+## 📍 Pilot Validation: Kedah Paddy Granary (MADA)
+
+FWise was piloted and stress-tested in **Kedah**—Malaysia's rice bowl (**228,963 ha** planted area; **947,621 tonnes** annual paddy production; **RM5.0M** flood losses in 2025)—across **6 deployed field stations** (`FS-KDH-01` to `FS-KDH-06`) covering MADA Blocks I–IV.
+
+### Simulated Scenario: Severe Monsoon Deluge & Tidal Lock (April – August 2026)
+* **Trigger:** +38% rainfall anomaly, >82% 14-day soil saturation, +42% catchment runoff, and astronomical spring high tides obstructing estuary gravity discharge at Sungai Kedah & Sungai Muda (> +2.4m bund elevation) for **12 days** during critical grain ripening.
+* **Exposure:** **9,450 ha** of standing MR297 paddy, **3,978 farm households**, and **11 industrial rice mills**.
+* **Recommended Plan (`STRAT-5` — Resilience Score: 94/100):** Synchronizes **METMalaysia** 15-min Doppler nowcasting, **JPS/MADA** pre-emptive canal drawdown (-0.5m MSL) and 12 mobile pump skids, **DOA/PPK** accelerated combine harvesting across 3,800 ha, **BERNAS** 24-hour grain drying & 2,000t reserve release, and **Logistics** freight rerouting.
+
+| Impact Metric | Without FWise (Unmitigated) | With FWise (`STRAT-5` Action Plan) | Net Improvement |
+| :--- | :---: | :---: | :---: |
+| ⏱️ **Preparation Lead Time** | Reactive / Late | **4 – 6 Weeks** | Proactive mobilization |
+| 🌾 **Projected Crop Loss** | 21.7% | **7.8%** | **-13.9% loss avoided** |
+| 📉 **Food Supply Deficit** | 4,500 tonnes | **829 tonnes** | **81.6% deficit reduction** |
+| 💰 **Economic Exposure** | RM 21.80 Million | **RM 1.41 Million** | **RM 20.39M saved** |
+
+---
+
+## 🤝 Multi-Sector Stakeholder Ecosystem
+
+| Stakeholder Group | Key Partners & Agencies | Role in FWise |
+| :--- | :--- | :--- |
+| **Government & Policymakers** | METMalaysia, JPS, MADA, DOA, NADMA, KPKM, KPDN, DOSM, MITI, Ministry of Economy | Provide policies, funding, verified hazard/crop data, and coordinated executive directives. |
+| **Producers & Supply Chain** | BERNAS, MARDI, NAFAS, FAMA, FELDA, PPK, Millers & Logistics Operators | Contribute ground data and execute field, milling, storage, and transport directives. |
+| **Tech & Research Partners** | SAP, MDEC, MRANTI, Universiti Teknologi Malaysia (UTM), UPM | Build AI forecasting, IoT hardware, cloud infrastructure, and analytical models. |
+| **Communities & NGOs** | Yayasan Food Bank Malaysia, MERCY Malaysia, Malaysian Red Crescent | Coordinate last-mile food distribution and support vulnerable communities. |
+
+---
+
+## 💰 Estimated Deployment Budget (Pilot Architecture)
+
+* **FWise IoT Field Station (Per Unit):** **RM 19,000** total (`RM 15,500` sensors, logger, 4G/LoRaWAN module, solar power & mast + `RM 3,500` civil foundation & installation).
+* **Software & Cloud Infrastructure:** **RM 40,000** one-time platform development (UI/UX, web/mobile apps, CRIS risk engine, scenario simulator & security) + **RM 500/month (RM 6,000/year)** cloud hosting (AWS IoT Core, API server, database & storage).
+
+---
+
+## 🌏 Regional Scalability Roadmap (ASEAN Vision 2040)
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#0077B6', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#03045E', 'lineColor': '#00B4D8'}}}%%
+timeline
+    title FWise Expansion Roadmap
+    Phase 1 (National) : Deploy FWise IoT stations across Malaysia
+                       : Establish national data governance & agency APIs
+                       : Validate CRIS forecasting across key granaries
+    Phase 2 (Bilateral/Sub-Regional) : Connect FWise with neighboring ASEAN states
+                                     : Standardize cross-border climate & crop schemas
+    Phase 3 (ASEAN-Wide 2040) : Multi-country disaster & supply stress testing
+                              : Regional food stockpile & logistics coordination
+```
+
+> **Final Vision:** *"A climate-resilient ASEAN with sufficient, safe, and accessible food for all by 2040."*
+
+---
+
+## 🎯 UN SDGs & Policy Alignment
+
+| SDG | Alignment & Target Contribution |
+| :--- | :--- |
+| **SDG 2: Zero Hunger** | Protects access to nutritious food (2.1), smallholder productivity/incomes (2.3), and resilient agricultural practices (2.4). |
+| **SDG 11: Sustainable Cities** | Decreases direct economic losses caused by climate disasters *(Target 11.5)*. |
+| **SDG 12: Responsible Production** | Reduces pre-harvest and post-harvest food losses across supply chains *(Target 12.3)*. |
+| **SDG 13: Climate Action** | Strengthens adaptive capacity and multi-hazard early-warning infrastructure *(Target 13.1)*. |
+| **AEC Blueprint 2025** | Directly supports Characteristic 5.3.3: *Ensure integrated food security information*. |
+
+---
+
+## 📂 Repository Structure
+
+```text
+├── docs/
+│   └── MALAYSIA_JJVISION_Presentation_slide.pdf   # Official ASEAN DSE 2026 Finalist Pitch Deck
+├── analytics/
+│   └── sac_storyboard_exports/                    # SAP Analytics Cloud (SAC) models & visualizations
+├── cris_engine/
+│   ├── risk_scoring.py                            # Climate anomaly & hazard risk scoring model
+│   └── stress_test_simulator.py                   # Crop loss & multi-criteria strategy optimizer
+├── hardware_specs/
+│   └── field_station_bom.md                       # 14-component IoT AWS architecture & BOM
+└── README.md
+```
+
+---
+
+<!-- Animated Blue Wave Footer -->
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D2FF,50:0575E6,100:021B79&height=120&section=footer" width="100%" />
+</div>
